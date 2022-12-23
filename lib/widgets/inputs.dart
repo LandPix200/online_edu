@@ -9,6 +9,7 @@ class HomeInput extends StatelessWidget {
   TextEditingController? controller;
   TextInputType? keyType;
   String? errorText;
+  bool obscure;
 
   HomeInput({
     Key? key,
@@ -17,6 +18,7 @@ class HomeInput extends StatelessWidget {
     this.controller,
     this.keyType,
     this.errorText,
+    this.obscure = false,
   }) : super(key: key);
 
   @override
@@ -46,6 +48,8 @@ class HomeInput extends StatelessWidget {
             ),
           ),
           TextField(
+            obscureText: obscure,
+           
             keyboardType: keyType,
             controller: controller,
             decoration: InputDecoration(

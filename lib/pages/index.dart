@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:online_edu/widgets/connextion_dialog.dart';
 
 import '../widgets/buttons.dart';
 import '../widgets/create_account_dialog.dart';
@@ -54,7 +55,13 @@ class _IndexPageState extends State<IndexPage> {
                 ),
                 HomeButton(
                   text: "SE CONNECTER",
-                  onPress: () {},
+                  onPress: () {
+                    showDialog(
+                        context: context,
+                        builder: ((context) {
+                          return ConnexionDialog();
+                        }));
+                  },
                 ),
               ],
             )
@@ -64,4 +71,3 @@ class _IndexPageState extends State<IndexPage> {
     );
   }
 }
-

@@ -4,32 +4,22 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:online_edu/widgets/inputs.dart';
 
-class CreateAccountDialog extends StatefulWidget {
-  const CreateAccountDialog({super.key});
+class ConnexionDialog extends StatefulWidget {
+  const ConnexionDialog({super.key});
 
   @override
-  State<CreateAccountDialog> createState() => _CreateAccountDialogState();
+  State<ConnexionDialog> createState() => _ConnexionDialogState();
 }
 
-class _CreateAccountDialogState extends State<CreateAccountDialog> {
+class _ConnexionDialogState extends State<ConnexionDialog> {
   static const errorRequis = "Ce champ est requis";
-
-  var nom = TextEditingController();
-
-  var prenom = TextEditingController();
-
-  var phone = TextEditingController();
 
   var email = TextEditingController();
 
   var mdp = TextEditingController();
 
-  var cmdp = TextEditingController();
-
-  String? errorNom;
   String? errorEmail;
   String? errorMdp;
-  String? errorCmdp;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +32,7 @@ class _CreateAccountDialogState extends State<CreateAccountDialog> {
         children: [
           SizedBox(),
           Text(
-            "CREATION DU COMPTE",
+            "CONNEXION",
             style: GoogleFonts.aBeeZee(
               fontWeight: FontWeight.bold,
             ),
@@ -61,39 +51,16 @@ class _CreateAccountDialogState extends State<CreateAccountDialog> {
       // ignore: prefer_const_literals_to_create_immutables
       children: [
         HomeInput(
-          label: "Votre nom",
-          controller: nom,
-          errorText: errorNom,
-        ),
-        HomeInput(
-          label: "Votre prénom",
-          required: false,
-          controller: prenom,
-        ),
-        HomeInput(
-          label: "Numéro de téléphone",
-          required: false,
-          keyType: TextInputType.phone,
-          controller: phone,
-        ),
-        HomeInput(
           label: "Adresse email",
           keyType: TextInputType.emailAddress,
           controller: email,
           errorText: errorEmail,
         ),
         HomeInput(
-          label: "Créer un mot de passe",
+          label: "Votre mot de passe",
           keyType: TextInputType.visiblePassword,
           controller: mdp,
           errorText: errorMdp,
-          obscure: true,
-        ),
-        HomeInput(
-          label: "Confirmation",
-          keyType: TextInputType.visiblePassword,
-          controller: cmdp,
-          errorText: errorCmdp,
           obscure: true,
         ),
         SizedBox(
@@ -101,16 +68,9 @@ class _CreateAccountDialogState extends State<CreateAccountDialog> {
         ),
         ElevatedButton(
           onPressed: () {
-            errorNom = null;
             errorEmail = null;
             errorMdp = null;
-            errorCmdp = null;
-
             bool good = true;
-            if (nom.text.isEmpty) {
-              errorNom = errorRequis;
-              good = false;
-            }
             if (email.text.isEmpty) {
               errorEmail = errorRequis;
               good = false;
@@ -119,19 +79,12 @@ class _CreateAccountDialogState extends State<CreateAccountDialog> {
               errorMdp = errorRequis;
               good = false;
             }
-            if (cmdp.text.isEmpty) {
-              errorCmdp = errorRequis;
-              good = false;
-            } else if (cmdp.text != mdp.text) {
-              errorCmdp = "Les Mots de passe de sont pas similaires";
-              good = false;
-            }
 
             setState(() {});
           },
           child: Padding(
             padding: EdgeInsets.all(10),
-            child: Text("S'ENREGISTRER"),
+            child: Text("SE CONNECTER"),
           ),
         )
       ],
