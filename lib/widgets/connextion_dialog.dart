@@ -68,9 +68,9 @@ class _ConnexionDialogState extends State<ConnexionDialog> {
         ),
         ElevatedButton(
           onPressed: () {
+            bool good = true;
             errorEmail = null;
             errorMdp = null;
-            bool good = true;
             if (email.text.isEmpty) {
               errorEmail = errorRequis;
               good = false;
